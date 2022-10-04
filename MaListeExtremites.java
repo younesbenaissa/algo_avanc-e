@@ -51,4 +51,17 @@ public class MaListeExtremites {
         lc.allerAuDebut();
         return lc.estEnFin();
     }
+    public String toString(){
+        if(estVide()) {
+            return "[]";
+        }else {
+            String str = "[" + lc.voirSuivant();
+            lc.avancer();
+            while(!lc.estEnFin()){
+                str += ", "+ lc.voirSuivant();
+                lc.avancer();
+            }
+            return str + "]";
+        }
+    }
 }
