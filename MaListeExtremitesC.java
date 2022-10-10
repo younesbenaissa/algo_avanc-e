@@ -14,14 +14,47 @@ public class MaListeExtremitesC implements ListeExtremites {
         if(estVide())throw new Exception("Liste vide");
         return tete.getElement();
     }
+
+    @Override
+    public Object voirQueue() throws Exception {
+        return null;
+    }
+
     public void rajouterEnTete(Object item){
         Cellule c = new Cellule(item);
         c.setSuivant(tete);
         tete=c;
     }
-    public Object retireEnTete() throws Exception{
+
+    @Override
+    public void rajouterEnQueue(Object item) {
+
+    }
+
+    @Override
+    public Object retirerEnTete() throws Exception {
         Object item = voirTete();
         tete = tete.getSuivant();
         return item;
     }
+
+    @Override
+    public Object retirerEnQueue() throws Exception {
+        if(tete.getSuivant()==null){
+            Object item = tete.getElement();
+            tete= null;
+            return item;
+        }
+        else {
+            Cellule c =tete;
+            while(c.getSuivant().getSuivant() != null){
+                c=c.getSuivant();
+            }
+            Object item = c.getSuivant().getSuivant();
+            c.setSuivant(null);
+            return item;
+        }
+    }
+
+
 }
